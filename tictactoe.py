@@ -106,16 +106,18 @@ class TicTacToeGUI:
         frame.pack()
         for i in range(3):
             for j in range(3):
-                self.buttons[i][j] = tk.Button(frame, text='', font=('Arial', 20), width=5, height=2,
+                self.buttons[i][j] = tk.Button(frame, text='', font=('Arial', 20), width=12, height=6
+                                                , background="black", foreground="white", border=2,
                                                command=lambda row=i, col=j: self.on_click(row, col))
                 self.buttons[i][j].grid(row=i, column=j)
         
     def create_difficulty_options(self):
         frame = tk.Frame(self.root)
         frame.pack()
+        #3 opciones de dificultad que abarquen toda la pantalla
         tk.Radiobutton(frame, text="Principiante", variable=self.difficulty, value=1, command=self.update_difficulty).pack(side=tk.LEFT)
         tk.Radiobutton(frame, text="Intermedio", variable=self.difficulty, value=3, command=self.update_difficulty).pack(side=tk.LEFT)
-        tk.Radiobutton(frame, text="Avanzado", variable=self.difficulty, value=5, command=self.update_difficulty).pack(side=tk.LEFT)
+        tk.Radiobutton(frame, text="Experto", variable=self.difficulty, value=5, command=self.update_difficulty).pack(side=tk.LEFT)
     
     def update_difficulty(self):
         self.game.depth = self.difficulty.get()
